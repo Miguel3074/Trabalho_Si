@@ -21,17 +21,18 @@ def vizinho(rota):
     nova_rota[i], nova_rota[j] = nova_rota[j], nova_rota[i]
     return nova_rota
 
-# # TESTE Distancias
-# distancias = [[distancia(i, j) for j in range(N)] for i in range(N)]
+#### TESTE Distancias
+distancias = [[distancia(i, j) for j in range(N)] for i in range(N)]
 
-# for cidade in cidades[:5]:
-#     print(cidade)
+for cidade in cidades[:5]:
+    print(cidade)
 
-# print(f"\nTotal {N}")
-# print(distancias[30][410])
-# print("teste", distancias[0][0])
+print(f"\nTotal {N}")
+print(distancias[30][410])
+print("teste", distancias[0][0])
+####
 
-# TESTE Rota
+#### TESTE Rota
 N = 10
 rota_teste = list(range(N))
 random.shuffle(rota_teste)
@@ -47,3 +48,4 @@ print("\ncusto", custo_rota(rota_teste))
 rota_vizinha = vizinho(rota_teste)
 print("Vizinho ", rota_vizinha)
 print("\ncusto", custo_rota(rota_vizinha))
+####
