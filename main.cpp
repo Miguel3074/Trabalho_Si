@@ -15,6 +15,8 @@ struct Cidade
     double x, y;
 };
 
+int i = 0;
+
 vector<Cidade> lerGrafoCSV(const string &nomeArquivo)
 {
     vector<Cidade> nos;
@@ -105,9 +107,10 @@ vector<int> simulatedAnnealing(vector<int> rotaInicial, const vector<Cidade> &ci
             melhorRota = rotaAtual;
         }
 
-        cout << "\nmelhor Custo: " << custoRota(melhorRota, cidades) << "\n";
+        //cout << "\nmelhor Custo: " << custoRota(melhorRota, cidades)<< "      Custo: " << custoRota(rotaAtual, cidades) <<"    T   "<< T;
 
         T *= alpha;
+        i++;
     }
 
     return melhorRota;
@@ -199,9 +202,16 @@ int main()
     shuffle(rota.begin(), rota.end(), g);
 
     // atributos
-    double T_inicial = 100000; // temperatura inicial  para cada 0 tbm aumenta o tempo de processamento mas n tanto quanto o alpha
-    double T_final = 1e-3;    // temperatura final   n entendi muito bem como funciona ainda, esse numero foi o gpt que deu quando perguntei sobre os atributos
-    double alpha = 0.99999;     // taxa de resfriamento (0,00001 eu acho q ta)  PARA CADA 9 NO FINAL AUMENTA MUITO O TEMPO DE PROCESSAMENTO MAS DA UMA RESPOSTA MELHOR, com 0.99999; consegui 18790.5 mas demorou uns 5-10 min
+    double T_inicial = 10000; // temperatura inicial  para cada 0 tbm aumenta o tempo de processamento mas n tanto quanto o alpha
+    double T_final = 0.00001;    // temperatura final   n entendi muito bem como funciona ainda, esse numero foi o gpt que deu quando perguntei sobre os atributos
+    double alpha = 0.9999;     // taxa de resfriamento (0,00001 eu acho q ta)  PARA CADA 9 NO FINAL AUMENTA MUITO O TEMPO DE PROCESSAMENTO MAS DA UMA RESPOSTA MELHOR, com 0.99999; consegui 18790.5 mas demorou uns 5-10 min
+
+
+
+    // double T_inicial = 10000; 
+    // double T_final = 0.00001;
+    // double alpha = 0.999999;  deixei um tempao rodando com esses e deu 18242.2
+
 
     vector<int> melhorRota = simulatedAnnealing(rota, cidades, T_inicial, T_final, alpha);
 
@@ -213,6 +223,8 @@ int main()
     cout << "\nCusto da Rota: " << custoRota(melhorRota, cidades) << "\n";
 
     gerarSVG(cidades, melhorRota, "rota_final.svg");
+
+    cout << "i: " << i;
 
     return 0;
 }
