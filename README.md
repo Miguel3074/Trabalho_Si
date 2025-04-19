@@ -1,85 +1,65 @@
+# Comparação de Algoritmos para o Problema do Caixeiro Viajante (TSP)
 
-Este projeto foi desenvolvido como parte da disciplina de Sistemas Inteligentes, com o objetivo de aplicar e comparar técnicas de otimização heurística na resolução do Problema do Caixeiro Viajante (TSP). Os algoritmos implementados foram:
+Este projeto foi desenvolvido como parte da disciplina de **Sistemas Inteligentes** da UTFPR. O objetivo é aplicar e comparar técnicas heurísticas na resolução do Problema do Caixeiro Viajante (TSP), utilizando:
 
-- Têmpera Simulada (Simulated Annealing - SA)
-- Algoritmo Genético (Genetic Algorithm - GA)
+- **Têmpera Simulada (Simulated Annealing - SA)**
+- **Algoritmo Genético (Genetic Algorithm - GA)**
 
 ---
 
 ## Objetivos
 
 - Implementar os algoritmos SA e GA em C++.
-- Resolver instâncias do TSP utilizando grafos lidos a partir de arquivos CSV.
-- Avaliar e comparar a performance de ambos os algoritmos.
-- Gerar visualizações gráficas da rota e da evolução do custo durante a execução.
+- Resolver instâncias do TSP lidas a partir de arquivos CSV.
+- Avaliar e comparar o desempenho de cada abordagem.
+- Gerar visualizações gráficas das rotas e da evolução do custo.
 
 ---
 
 ## Execução
 
-### Compilação
+Utilize um compilador com suporte ao padrão C++11 ou superior:
 
-Utilize um compilador C++ com suporte ao padrão C++11 ou superior:
+Os parâmetros de cada algoritmo podem ser modificados diretamente na função main().
 
-```bash
-g++ main.cpp -o tsp -std=c++11
-Execução
-bash
-Copiar
-Editar
-./tsp
-Os parâmetros de cada algoritmo podem ser configurados diretamente no código, na função main().
 
-Estrutura do Projeto
-main.cpp: Ponto de entrada do programa, contendo a lógica de execução principal.
+## Saídas Geradas
+- rota_final.svg — Visualização da rota final.
 
-simulatedAnnealing.cpp: Implementação da Têmpera Simulada.
+- grafico_custo.svg — Evolução do custo da rota (SA).
 
-algoritmoGenetico.cpp: Implementação do Algoritmo Genético.
+- grafico_temperatura.svg — Evolução da temperatura (SA).
 
-utils.cpp: Funções auxiliares, como leitura de arquivos e geração de gráficos.
+- cidades.svg — Visualização apenas dos pontos das cidades.
 
-grafo_500.csv: Instância do problema contendo a lista de cidades com coordenadas.
+## Parametrização
+# Têmpera Simulada (SA)
+- T_inicial — Temperatura inicial
 
-Saídas Geradas
-Durante a execução, o programa gera os seguintes arquivos:
+- T_final — Temperatura final
 
-rota_final.svg: Visualização da rota final gerada pelo algoritmo.
+- alpha — Fator de resfriamento
 
-grafico_custo.svg: Gráfico da evolução do custo da solução (apenas para SA).
+# Algoritmo Genético (GA)
+- G — Número de gerações
 
-grafico_temperatura.svg: Gráfico da evolução da temperatura (apenas para SA).
+- P — Tamanho da população
 
-cidades.svg: Visualização das cidades sem conexão entre elas.
+- TM — Taxa de mutação
 
-Parametrização
-Têmpera Simulada (SA)
-T_inicial: Temperatura inicial.
+Todos os parâmetros podem ser ajustados no início da função main().
+---
+## Observações
+Os arquivos SVG podem atingir tamanhos elevados em execuções com muitas cidades ou histórico detalhado.
 
-T_final: Temperatura final.
+Para evitar problemas ao versionar arquivos grandes, utilize o Git LFS.
 
-alpha: Fator de resfriamento.
+Recomendamos abrir os arquivos SVG com softwares apropriados, como navegadores modernos ou ferramentas de edição vetorial.
 
-Algoritmo Genético (GA)
-G: Número de gerações.
-
-P: Tamanho da população.
-
-TM: Taxa de mutação.
-
-Esses parâmetros são definidos no início da função main() e podem ser ajustados conforme o experimento desejado.
-
-Considerações
-Os arquivos SVG podem gerar tamanhos elevados em instâncias grandes. Evite armazenar arquivos maiores que 100 MB no repositório.
-
-Recomenda-se o uso do Git LFS caso seja necessário versionar arquivos grandes.
-
-A visualização dos gráficos SVG pode ser feita em navegadores modernos ou ferramentas de visualização vetorial.
-
-Autores
-Miguel Dos Anjos Brack – @Miguel3074
+## Autores
+Miguel dos Anjos Brack — @Miguel3074
 
 Renzo Tognella de Rosa
 
 Licença
-Projeto desenvolvido para fins acadêmicos na Universidade Tecnológica Federal do Paraná (UTFPR), campus Curitiba.
+Uso acadêmico. Projeto desenvolvido para a disciplina de Sistemas Inteligentes — UTFPR.
