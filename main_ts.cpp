@@ -111,7 +111,11 @@ vector<int> simulatedAnnealing(vector<int> rotaInicial, const vector<Cidade> &ci
 
         // cout << "\nmelhor Custo: " << custoRota(melhorRota, cidades)<< "      Custo: " << custoRota(rotaAtual, cidades) <<"    T   "<< T;
 
-        cout << custoAtual << "\n ";
+        if (i % 1000 == 0)
+        {
+            cout << "iteracao " << i << "/" 
+                 << " - custo: " << custoAtual << endl;
+        }
 
         T *= alpha;
         i++;
@@ -219,23 +223,6 @@ int main()
     vector<Cidade> cidades = lerGrafoCSV("grafo_500.csv");
     int N = cidades.size();
 
-    // //TESTES
-    // cout << "Total de cidades: " << N << "\n\n";
-    // for (int i = 0; i < 5 && i < N; ++i)
-    // {
-    //     cout << "Cidade " << cidades[i].id << ": x=" << cidades[i].x << ", y=" << cidades[i].y << "\n";
-    // }
-    // vector<vector<double>> distancias(N, vector<double>(N));
-    // for (int i = 0; i < N; ++i)
-    // {
-    //     for (int j = 0; j < N; ++j)
-    //     {
-    //         distancias[i][j] = distancia(cidades[i], cidades[j]);
-    //     }
-    // }
-    // cout << "\nDistancia entre cidade 2 e 3: " << distancias[2][3] << "\n";
-    // cout << "Distancia cidade 0 para ela mesma: " << distancias[0][0] << "\n\n";
-
     vector<int> rota(N);
     for (int i = 0; i < N; ++i)
         rota[i] = i;
@@ -246,29 +233,9 @@ int main()
     shuffle(rota.begin(), rota.end(), g);
 
     // atributos
-    double T_inicial = 10000; // temperatura inicial  para cada 0 tbm aumenta o tempo de processamento mas n tanto quanto o alpha
-    double T_final = 0.001; // temperatura final   n entendi muito bem como funciona ainda, esse numero foi o gpt que deu quando perguntei sobre os atributos
-    double alpha = 0.99999;    // taxa de resfriamento (0,00001 eu acho q ta)  PARA CADA 9 NO FINAL AUMENTA MUITO O TEMPO DE PROCESSAMENTO MAS DA UMA RESPOSTA MELHOR,
-
-    // double T_inicial = 10000;
-    // double T_final = 0.00001;
-    // double alpha = 0.9999;           i = 20723256x e melhor custo 18242.2     ***meelhor solucao mas demorou pakaraio
-
-    // double T_inicial = 10000; 
-    // double T_final = 0.001;
-    // double alpha = 0.999995;         i = 3223612x e melhor custo 18706.1
-
-    // double T_inicial = 10000; 
-    // double T_final = 0.001;
-    // double alpha = 0.9999;           i = 161173x e melhor custo 25973.9
-
-    // double T_inicial = 10000; 
-    // double T_final = 0.001;
-    // double alpha = 0.99995;          i = 322354x e melhor custo 21249.1
-
-    // double T_inicial = 10000; 
-    // double T_final = 0.001;
-    // double alpha = 0.99999;          i = 1611802x e melhor custo 18359.5     ***** Até agora acho q foi o q mais valeu a pena em (i/custo)
+    double T_inicial = 1000; // temperatura inicial  para cada 0 tbm aumenta o tempo de processamento mas n tanto quanto o alpha
+    double T_final = 0.01; // temperatura final   n entendi muito bem como funciona ainda, esse numero foi o gpt que deu quando perguntei sobre os atributos
+    double alpha = 0.999;    // taxa de resfriamento (0,00001 eu acho q ta)  PARA CADA 9 NO FINAL AUMENTA MUITO O TEMPO DE PROCESSAMENTO MAS DA UMA RESPOSTA MELHOR,
 
     vector<int> melhorRota = simulatedAnnealing(rota, cidades, T_inicial, T_final, alpha);
     
