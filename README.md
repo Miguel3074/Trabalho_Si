@@ -32,6 +32,8 @@ Os parâmetros de cada algoritmo podem ser modificados diretamente na função m
 
 - cidades.svg — Visualização apenas dos pontos das cidades.
 
+- resultados TS e AG, nos arquivos em formato excel. 
+
 ## Parametrização
 # Têmpera Simulada (SA)
 - T_inicial — Temperatura inicial
